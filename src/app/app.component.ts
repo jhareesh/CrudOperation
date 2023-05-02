@@ -11,7 +11,13 @@ export class AppComponent {
   title = 'CrudOperation';
   // reading from the json of person
   url = "http://localhost:3000/person"
-  data1:any
+  //variable to store the data from html below
+  data1:any;
+
+  //defining variable
+  nametemplatecreate : any;
+  phonetemplatecreate : any;
+  emailtemplatecreate : any;
 
   //creating an constructor to read the data to store it in html
   constructor(private http:HttpClient)
@@ -25,5 +31,14 @@ export class AppComponent {
 
   }
 
+  //defining function
+  onSubmitCreate(dataCreate:any)
+  {
+      //using http and getting url specified in the App.componet.url
+    // subscribing it and using the arrow function to store the data and pushed simultaneously
+    this.http.post(this.url,dataCreate.value).subscribe(res=>{
+      this.data1.push(res)
+    })
+  }
 
 }
