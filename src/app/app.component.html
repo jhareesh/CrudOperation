@@ -1,29 +1,52 @@
 <!-- <h1>{{data1 | json}}</h1> -->
 <ul>
     <li class="list-group-item border border-danger" *ngFor="let element of data1">
+        <!-- DELETE OPERATION IS ADDED -->
+        <button class="btn btn-danger" (click)="onDelete(element)">Delete</button>
+        <!-- UPDATE OPERATION IS ADDED -->
+        <button class="btn btn-success" (click)="onUpdate(element)">Update</button>
         {{element | json}}
     </li>
 </ul>
 
+<!-- FORM FOR CREATION OF DATA -->
 <div>
+    <!--TEMPLATE REFERENCE VARIABLE ALONG WITH ANGULAR EVENT-->
     <form #datacreate="ngForm" (ngSubmit)="onSubmitCreate(datacreate)">
         <div>
             <label>Name : </label>
-            
+             <!--FOLLOWING THE TWO WAY BINDING [(ngModel)]  data & event binding  | APPLYING BOOTSTRAP USING CLASS NAME-->
             <input type="text" class="form-control" name="namejson" [(ngModel)]="nametemplatecreate">
-
         </div>
         <div>
             <label>Email : </label>
             <input type="text" class="form-control" name="emailjson" [(ngModel)]="emailtemplatecreate">
-
         </div>
         <div>
             <label>Phone : </label>
             <input type="text" class="form-control" name="phonejson" [(ngModel)]="phonetemplatecreate">
-
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
 
+<!-- FORM FOR MODIFICATION OF DATA -->
+<div>
+    <!--TEMPLATE REFERENCE VARIABLE ALONG WITH ANGULAR EVENT-->
+    <form #dataModify="ngForm" (ngSubmit)="onModify(dataModify)" > 
+        <div>
+            <label>Name : </label>
+            <!--FOLLOWING THE TWO WAY BINDING [(ngModel)]  data & event binding  | APPLYING BOOTSTRAP USING CLASS NAME-->
+            <input type="text" class="form-control" name="namejson" [(ngModel)]="nametemplateModify">
+        </div>
+        <div>
+            <label>Email : </label>
+            <input type="text" class="form-control" name="emailjson" [(ngModel)]="emailtemplateModify">
+        </div>
+        <div>
+            <label>Phone : </label>
+            <input type="text" class="form-control" name="phonejson" [(ngModel)]="phonetemplateModify">
+        </div>
+        <button type="submit" class="btn btn-primary">Modify</button>
     </form>
 </div>
